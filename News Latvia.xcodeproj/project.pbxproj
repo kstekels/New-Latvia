@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		151D90DF25DFC5B400B60B44 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151D90DE25DFC5B400B60B44 /* NewsTableViewCell.swift */; };
 		15E415F425D6E2F100E55E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E415F325D6E2F100E55E10 /* AppDelegate.swift */; };
 		15E415F625D6E2F100E55E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E415F525D6E2F100E55E10 /* SceneDelegate.swift */; };
 		15E415F825D6E2F100E55E10 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E415F725D6E2F100E55E10 /* NewsViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		151D90DE25DFC5B400B60B44 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		15E415F025D6E2F100E55E10 /* News Latvia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News Latvia.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E415F325D6E2F100E55E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15E415F525D6E2F100E55E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				15E415F725D6E2F100E55E10 /* NewsViewController.swift */,
 				15E4162025D6FF0300E55E10 /* DetailViewController.swift */,
 				15E4162325D7018500E55E10 /* WebViewController.swift */,
+				151D90DE25DFC5B400B60B44 /* NewsTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			files = (
 				15E4161925D6E5D300E55E10 /* Item.swift in Sources */,
 				15E415F825D6E2F100E55E10 /* NewsViewController.swift in Sources */,
+				151D90DF25DFC5B400B60B44 /* NewsTableViewCell.swift in Sources */,
 				15E415FE25D6E2F100E55E10 /* News_Latvia.xcdatamodeld in Sources */,
 				15E4162125D6FF0300E55E10 /* DetailViewController.swift in Sources */,
 				15E4162425D7018500E55E10 /* WebViewController.swift in Sources */,

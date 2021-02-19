@@ -28,7 +28,8 @@ class DetailViewController: UIViewController {
         print(urlLinkString)
         
         titleLabel.text = titleString
-        titleLabel.backgroundColor = .yellow
+        titleLabel.tintColor = .systemFill
+        titleLabel.backgroundColor = .systemYellow
         contentTextView.text = contentString
         imageView.image = getImage()
     }

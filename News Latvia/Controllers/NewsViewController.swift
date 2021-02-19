@@ -13,18 +13,49 @@ class NewsViewController: UIViewController {
     var items: [Item] = []
     var image = UIImage()
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "News"
+        activityIndicator.isHidden = true
+        activityIndicator.style = .large
+        tableView.isHidden = true
+        animatedLogo()
+        
         
     }
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
+        activityIndicatorState(animated: true)
         getDataHandler()
     }
     
+    func activityIndicatorState(animated: Bool) {
+        DispatchQueue.main.async {
+            if animated{
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }else{
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
+    func animatedLogo() {
+        //MARK: - Animated Logo
+        self.title = ""
+        var charIndex = 0.0
+        let titleText = "📰 in Latvia 🇱🇻"
+        for letter in titleText{
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
+                self.title!.append(letter) // Closure (self)
+            }
+            charIndex += 1
+            
+        }
+    }
 
 
     
@@ -73,7 +104,9 @@ class NewsViewController: UIViewController {
         items = [Item].from(jsonArray: dictResponse) ?? []
         
         DispatchQueue.main.async {
+            self.tableView.isHidden = false
             self.tableView.reloadData()
+            self.activityIndicatorState(animated: false)
         }
         
     }
@@ -90,27 +123,35 @@ extension NewsViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCells", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCells", for: indexPath) as? NewsTableViewCell else {
+            return UITableViewCell()
+        }
         
-        cell.textLabel?.text = items[indexPath.row].title
-        cell.detailTextLabel?.text = items[indexPath.row].description
+        let item = items[indexPath.row]
+        
+        cell.titleLabelTExt.text = item.title
+        cell.articleTextLabel.text = item.description
+        
+//        cell.textLabel?.text = items[indexPath.row].title
+//        cell.detailTextLabel?.text = items[indexPath.row].description
         //MARK: - Get Image
-        let urlImageString = items[indexPath.row].urlToImage
+        let urlImageString = item.urlToImage
         let imageURL:URL = URL(string: urlImageString)!
         let imageData = try? Data(contentsOf: imageURL)
         image = UIImage(data: imageData!)!
-        cell.imageView?.center = self.view.center
-        cell.imageView?.image = image
+//        cell.imageView?.center = self.view.center
+        cell.arcticleImageView.image = image
         //
             
         
 
         return cell
     }
-    
-    func getImage() {
-        
+    //MARK: - Row height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
+    
     
     
     
